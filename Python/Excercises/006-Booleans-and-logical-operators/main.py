@@ -46,7 +46,7 @@ else:
     print("Another day in the good life of the farm life")
 
 # 6 If it's autumn, sun is shing then the cows can go outside
-if isSunny and isAutumn and areCowsGrazing == True:
+if isSunny and isAutumn and not areCowsGrazing:
     print("Sun is shining, and so are you, take those beautiful beasts for a stroll")
 else:
     print("Leave dem bad boys be")
