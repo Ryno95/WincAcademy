@@ -90,6 +90,33 @@ band.remove(NicolasBass),
 band.remove(Simon),
 band.insert(1, Daryl),
 band.insert(2, GrahamBass),
+# print(band)
+
+print(
+    "Het jaar is 1981. "
+    + band[0][0]
+    + " doet "
+    + band[0][1]
+    + ". "
+    + band[1][0]
+    + " verschijnt op de "
+    + band[1][1]
+    + ","
+    + band[2][0]
+    + " speelt "
+    + band[2][1]
+    + " en "
+    + band[3][0]
+    + " zit achter de "
+    + band[3][1]
+    + "."
+)
+
+band.remove(Daryl),
+band.remove(GrahamBass),
+band.insert(1, Graham),
+band.insert(2, NicolasBass)
+# print(band)
 
 print(
     "Het jaar is 1981. "
