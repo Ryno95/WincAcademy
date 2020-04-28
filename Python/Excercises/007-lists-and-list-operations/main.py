@@ -56,39 +56,19 @@ allBandMembers = [
     Erik,
     Jesper,
 ]
-# print(allBandMembers)
 
-yearsActive = list(range(1981, 2021))
-# print(yearsActive)
+
+# For a printout of every year without user input (Non Dry)
+"""yearsActive = list(range(1981, 2021))
 
 for x in yearsActive:
     print("The year is " + str(x) + ":")
     for y in allBandMembers:
         if y[2] <= x <= y[3]:
-            print(y[0], "was on", y[1])
+            print(y[0], "was on", y[1])"""
 
-"""print(
-    "Het jaar is 1981.",
-    band[0][0],
-    "doet",
-    band[0][1],
-    ",",
-    band[2][0],
-    "speelt",
-    band[2][1],
-    "en",
-    band[3][0],
-    "zit achter de",
-    band[3][1],
-    ".",
-)"""
-
-##print(Shane)
-##for i in range(1981, 2021):
-##    if allBandMembers[][]
-
-
-"""band = [Nicholas, NicolasBass, Simon, Miles]
+# According to the excersize
+band = [Nicholas, NicolasBass, Simon, Miles]
 print(
     "Het jaar is 1981.",
     band[0][0],
@@ -96,7 +76,6 @@ print(
     band[0][1],
     "en",
     band[1][1],
-    ",",
     band[2][0],
     "speelt",
     band[2][1],
@@ -111,4 +90,23 @@ band.remove(NicolasBass),
 band.remove(Simon),
 band.insert(1, Daryl),
 band.insert(2, GrahamBass),
-"""
+
+print(
+    "Het jaar is 1981. "
+    + band[0][0]
+    + " doet "
+    + band[0][1]
+    + ". "
+    + band[1][0]
+    + " verschijnt op de "
+    + band[1][1]
+    + ","
+    + band[2][0]
+    + " speelt "
+    + band[2][1]
+    + " en "
+    + band[3][0]
+    + " zit achter de "
+    + band[3][1]
+    + "."
+)
