@@ -1,4 +1,3 @@
-# While loop exercise, I quickly realized for loops are way more effective
 import re
 
 all_countries = [
@@ -301,7 +300,7 @@ print(
 
 
 # 3
-# Collect all countries needed to fill in the letters A - F
+# Collect all countries needed to fill in the letters of the alphabet
 alphabetCountries = []
 alphabet = [
     "a",
