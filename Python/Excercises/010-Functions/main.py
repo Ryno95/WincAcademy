@@ -43,15 +43,7 @@ for player in vitessePlayers:
 
 # print(allPlayersDict)
 
-
-"""**doelen-list**
-
-- maak een list van de goals in deze wedstrijd
-- de goals zijn op chronologische volgorde
-- elk item in deze list is een dict met de volgende keys:
-    - id van de speler die scoorde
-    - tijdstip"""
-
+# 1 write a function that prints the end result of the game using the players and goals lists
 goalsScored = [
     {"goalScorer": "Johan Neeskens", "time": 10},
     {"goalScorer": "Johan Neeskens", "time": 28},
@@ -72,9 +64,11 @@ goalsScored = [
 def endResult(players=allPlayersDict, goals=goalsScored):
     ajaxScore = 0
     vitesseScore = 0
-    for goal in goals:
-        for player in players:
+    for goal in goals:  # Loop over each goal scored
+        for player in players:  # Loop over each player
+            # Find the player who scored the goal in allPLayersDict
             if goal["goalScorer"] in player["fullName"]:
+                # Check to which team the goal scorer belongs
                 if player["team"] == "Ajax":
                     ajaxScore += 1
                 else:
@@ -83,3 +77,39 @@ def endResult(players=allPlayersDict, goals=goalsScored):
 
 
 endResult()
+
+# 2 Write a function that prints a match report for every
+#   goal and also the end result
+# In de 28e minuut scoort Johan Neeskens voor Ajax, het is 2-0.
+
+
+def gameReport(players=allPlayersDict, goals=goalsScored):
+    ajaxScore = 0
+    vitesseScore = 0
+    for goal in goals:  # Loop over each goal scored
+        for player in players:  # Loop over each player
+            if goal["goalScorer"] in player["fullName"]:
+                # Check to which team the goal scorer belongs
+                if player["team"] == "Ajax":
+                    ajaxScore += 1
+                    print(
+                        goal["goalScorer"],
+                        "scored in the " + str(goal["time"]) + "th minute. Ajax",
+                        ajaxScore,
+                        "- Vitesse",
+                        vitesseScore,
+                    )
+                else:
+                    vitesseScore += 1
+                    print(
+                        goal["goalScorer"],
+                        "scored in the " + str(goal["time"]) + "th minute. Ajax",
+                        ajaxScore,
+                        "- Vitesse",
+                        vitesseScore,
+                    )
+
+    print(">>>Ajax beat Vitesse with an end score of", ajaxScore, "-", vitesseScore)
+
+
+gameReport()
