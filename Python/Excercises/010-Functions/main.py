@@ -41,7 +41,7 @@ for player in vitessePlayers:
         allPlayersDict.append({"fullName": player, "id": (j + 12), "team": "Vitesse"})
         j += 1
 
-print(allPlayersDict)
+# print(allPlayersDict)
 
 
 """**doelen-list**
@@ -60,10 +60,26 @@ goalsScored = [
     {"goalScorer": "Johan Cruyff", "time": 47},
     {"goalScorer": "Dick van Dijk", "time": 49},
     {"goalScorer": "Dick van Dijk", "time": 51},
-    {"goalScorer": "Gerrie Mühren", "time": 63},
+    {"goalScorer": "Gerrie Muhren", "time": 63},
     {"goalScorer": "Barry Hulshoff", "time": 70},
     {"goalScorer": "Herman Veenendaal", "time": 75},
     {"goalScorer": "Johan Cruyff", "time": 78},
     {"goalScorer": "Dick van Dijk", "time": 81},
     {"goalScorer": "Johan Neeskens", "time": 88},
 ]
+
+
+def endResult(players=allPlayersDict, goals=goalsScored):
+    ajaxScore = 0
+    vitesseScore = 0
+    for goal in goals:
+        for player in players:
+            if goal["goalScorer"] in player["fullName"]:
+                if player["team"] == "Ajax":
+                    ajaxScore += 1
+                else:
+                    vitesseScore += 1
+    print(">>>Ajax beat Vitesse with an end score of", ajaxScore, "-", vitesseScore)
+
+
+endResult()
