@@ -1,3 +1,4 @@
+# Global Variables
 ajaxPlayers = [
     "Heinz Stuy",
     "Barry Hulshoff",
@@ -61,6 +62,7 @@ goalsScored = [
 ]
 
 
+# Functions
 def endResult(players=allPlayersDict, goals=goalsScored):
     ajaxScore = 0
     vitesseScore = 0
@@ -77,10 +79,6 @@ def endResult(players=allPlayersDict, goals=goalsScored):
 
 
 endResult()
-
-# 2 Write a function that prints a match report for every
-#   goal and also the end result
-# In de 28e minuut scoort Johan Neeskens voor Ajax, het is 2-0.
 
 
 def gameReport(players=allPlayersDict, goals=goalsScored):
@@ -112,4 +110,4 @@ def gameReport(players=allPlayersDict, goals=goalsScored):
     print(">>>Ajax beat Vitesse with an end score of", ajaxScore, "-", vitesseScore)
 
 
-gameReport()
+# gameReport()
