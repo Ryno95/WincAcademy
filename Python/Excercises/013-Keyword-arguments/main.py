@@ -1,5 +1,7 @@
 import math
 
+# --------------------- Exercise 1 ---------------
+
 # Create a function to calculate the newton of
 # different objects on different celestial bodies
 
@@ -30,7 +32,10 @@ newtonForce(800, 9.8)  # Cow of 800kg on earth
 newtonForce(gramToKilogram(100), 24.9)  # 100gr on Jupiter
 newtonForce(milligramToKilogram(15), 274)  # 15mg on the Sun
 
-# 2 Create a function that determines the gravitational pull between 2 objects
+
+# ---------------------- Exercise 2 ----------------
+
+# Create a function that determines the gravitational pull between 2 objects
 # Writing exponentials, math.pow(2, 3) = 8
 # force = g * ((objectOneMass * objectTwoMass) / math.pow(distanceBetweenObjects, 2))
 
@@ -46,7 +51,9 @@ gravitationalForce(
     gramToKilogram(100), (5.972 * math.pow(10, 24)), kilometerToMeter(6371)
 )
 
-# 3
+# -----------------------Exercise 3 ---------------
+
+# Create a function that print the force between every planet in the solar system
 # Distance is in AU https://en.wikipedia.org/wiki/Astronomical_unit
 distanceCombinations = [
     {"from": "Mercury", "to": "Venus", "distance": 0.34},
@@ -111,18 +118,20 @@ def gravitationalPull(objectOneMass, objectTwoMass, distanceBetweenObjects):
     gravitaionalForce = G * (
         (objectOneMass * objectTwoMass) / math.pow(distanceBetweenObjects, 2)
     )
-    print(f"     {gravitaionalForce} Newtons")
+    return gravitaionalForce
 
 
 def gravitationalPullReport(combinations=distanceCombinations):
     for combination in combinations:
         planetOneKey = combination["from"]
         planetTwoKey = combination["to"]
-        print(f"{planetOneKey} en {planetTwoKey} attract each other with a force of: ")
-        gravitationalPull(
+        force = gravitationalPull(
             trueWeight(weight[planetOneKey]),
             trueWeight(weight[planetTwoKey]),
             auToMeters(combination["distance"]),
+        )
+        print(
+            f"{planetOneKey} en {planetTwoKey} attract each other with a force of: {force} Newton"
         )
 
 
