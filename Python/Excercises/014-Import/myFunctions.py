@@ -1,3 +1,8 @@
+# --------- #1 --------- #
+# Create a function that checks if a word is a palindrome
+# Create a function that checks if a num is odd/even
+
+
 def reverseWord(word):
     return word[::-1]
 
@@ -11,12 +16,16 @@ def isPalindrome(wordToCheck):
 
 
 def isOddOrEven(num):
-    if (num % 2) == 0:
-        print("{0} is Even".format(num))
-    else:
-        print("{0} is Odd".format(num))
+    for item in num:
+        if (item % 2) == 0:
+            print("{0} is Even".format(item))
+        else:
+            print("{0} is Odd".format(item))
 
 
+# -------- # 2 ---------- #
+# Create a fucntion that checks if all all list items are ints
+# Followed by a function that adds all ints in a list
 hasOnlyInts = False
 
 

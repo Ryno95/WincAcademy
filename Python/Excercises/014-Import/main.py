@@ -1,6 +1,8 @@
 import myFunctions
 import myData
 
+
+# ------------- #1 ----------#
 check = myFunctions.isPalindrome("malayalam")
 
 
@@ -9,9 +11,12 @@ if check:
 else:
     print("No your input is not a palindrome")
 
-# for number in myData.lst1:
-#   myFunctions.isOddOrEven(number)
-# myFunctions.containsOnlyInt(myData.lst1)
-# myFunctions.containsOnlyInt(myData.lst2)
 
-myFunctions.sumList(myData.lst2)
+myFunctions.isOddOrEven(myData.lst1)
+
+# --------------- #2 ----------#
+
+myFunctions.containsOnlyInt(myData.lst1)
+myFunctions.containsOnlyInt(myData.lst2)
+
+myFunctions.sumList(myData.lst1)
