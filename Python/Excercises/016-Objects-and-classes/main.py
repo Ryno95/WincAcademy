@@ -1,4 +1,53 @@
-# --------- Data -------- #
+# --------- Classes ---------#
+
+
+class Player:
+    def __init__(self, fullName, team):
+        self.fullName = fullName
+        self.team = team
+
+
+class Goals:
+    def __init__(self, goalScorer, time):
+        self.goalScorer = goalScorer
+        self.time = time
+
+
+class Team:
+    def __init__(self, team, trainer, players):
+        self.team = team
+        self.trainer = trainer
+        self.players = players
+
+
+class Referee:
+    def __init__(self, referee):
+        self.referee = referee
+
+
+class Location:
+    def __init__(self, city, stadium):
+        self.city = city
+        self.stadium = stadium
+
+
+class Coach:
+    def __init__(self, fullName, team):
+        self.fullName = fullName
+        self.team = team
+
+
+class Match:
+    def __init__(self, date, matchLocation, attendance, referee, homeTeam, awayTeam):
+        self.date = date
+        self.matchLocation = matchLocation
+        self.attendance = attendance
+        self.referee = referee
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
+
+
+# --------- Data and Global Variables -------- #
 
 ajaxPlayers = [
     "Heinz Stuy",
@@ -50,114 +99,67 @@ goalsScored = [
 ajax = "AFC Ajax"
 vitesse = "Vitesse"
 
-# --------- Classes ---------#
+
+# ----------- Match Details ----------#
+referee = Referee("Joop Vervoort")
+attendance = 6000
+gameDate = "Friday 19 Mei 1972"
+matchLocation = Location("Amsterdam", "De Meer")
 
 
-class Player:
-    def __init__(self, fullName, team):
-        self.fullName = fullName
-        self.team = team
+matchDetailsObject = Match(gameDate, matchLocation, attendance, referee, ajax, vitesse)
+print(matchDetailsObject.matchLocation.city)
 
+# ----------- Ajax Team ------------#
+AjaxTeamName = "AFC Ajax"
 
-class Goals:
-    def __init__(self, goalScorer, time):
-        self.goalScorer = goalScorer
-        self.time = time
+ajaxCoach = Coach("Ștefan Kovács", ajax)
 
-
-class Team:
-    def __init__(self, team):
-        self.team = team
-
-
-# listofTeams = [Team(ajax), Team(vitesse)]
-# for team in listofTeams:
-#   print(team.team)
-
-
-class Match:
-    pass
-
-
-class Referee:
-    def __init__(self, referee):
-        self.referee = referee
-
-
-class Location:
-    def __init__(self, city, stadium):
-        self.city = city
-        self.stadium = stadium
-
-
-class Coach:
-    def __init__(self, coach):
-        self.coach = coach
-
-
-# ----------- Ajax Players ------------#
-
-Heinz = Player("Heinz Stuy", ajax)
-Barry = Player("Barry Hulshoff", ajax)
-Gerrie = Player("Gerrie Muhren", ajax)
-Ruud = Player("Ruud Krol", ajax)
-Wim = Player("Wim Suurbier", ajax)
-Horst = Player("Horst Blankenburg", ajax)
-Sjaak = Player("Sjaak Swart", ajax)
-Arie = Player("Arie Haan", ajax)
-Johan = Player("Johan Neeskens", ajax)
-Cruyff = Player("Johan Cruyff", ajax)
-DickAjax = Player("Dick van Dijk", ajax)
-Johnny = Player("Johnny Rep", ajax)
-
-
-# ----------- Vitesse Players ------------#
-
-DickVitesse = Player("Dick Beukhof", vitesse)
-BenGerritsen = Player("Ben Gerritsen", vitesse)
-WillyMelchers = Player("Willy Melchers", vitesse)
-BenBosma = Player("Ben Bosma", vitesse)
-Nico = Player("Nico Kunst", vitesse)
-Herman = Player("Herman Veenendaal", vitesse)
-WillyVeenstra = Player("Willy Veenstra", vitesse)
-Bram = Player("Bram van Kerkhof", vitesse)
-Co = Player("Co Prins", vitesse)
-Thei = Player("Thei Rutten", vitesse)
-HenkVleeming = Player("Henk Vleeming", vitesse)
-HenkHofs = Player("Henk Hofs", vitesse)
-John = Player("John Meeuwsen", vitesse)
-
-# ---------- All PLayers -------------#
-
-playerObjects = [
-    Heinz,
-    Barry,
-    Gerrie,
-    Ruud,
-    Wim,
-    Horst,
-    Sjaak,
-    Arie,
-    Johan,
-    Cruyff,
-    DickAjax,
-    Johnny,
-    DickVitesse,
-    BenGerritsen,
-    WillyMelchers,
-    BenBosma,
-    Nico,
-    Herman,
-    WillyVeenstra,
-    Bram,
-    Co,
-    Thei,
-    HenkVleeming,
-    HenkHofs,
-    John,
+teamAjax = [
+    Player("Heinz Stuy", ajax),
+    Player("Barry Hulshoff", ajax),
+    Player("Gerrie Muhren", ajax),
+    Player("Ruud Krol", ajax),
+    Player("Wim Suurbier", ajax),
+    Player("Horst Blankenburg", ajax),
+    Player("Sjaak Swart", ajax),
+    Player("Arie Haan", ajax),
+    Player("Johan Neeskens", ajax),
+    Player("Johan Cruyff", ajax),
+    Player("Dick van Dijk", ajax),
+    Player("Johnny Rep", ajax),
 ]
-# for footballer in playerObjects:
-#    print(footballer.fullName, footballer.team)
+
+AjaxTeamObject = Team(AjaxTeamName, ajaxCoach, teamAjax)
+
+# ----------- Vitesse Team ------------#
+vitesseTeamName = "Vitesse"
+
+vitesseCoach = Coach("Cor Brom", vitesse)
+
+teamVitesse = [
+    Player("Dick Beukhof", vitesse),
+    Player("Ben Gerritsen", vitesse),
+    Player("Willy Melchers", vitesse),
+    Player("Ben Bosma", vitesse),
+    Player("Nico Kunst", vitesse),
+    Player("Herman Veenendaal", vitesse),
+    Player("Willy Veenstra", vitesse),
+    Player("Bram van Kerkhof", vitesse),
+    Player("Co Prins", vitesse),
+    Player("Thei Rutten", vitesse),
+    Player("Henk Vleeming", vitesse),
+    Player("Henk Hofs", vitesse),
+    Player("John Meeuwsen", vitesse),
+]
+
+VitesseTeamObject = Team(vitesseTeamName, vitesseCoach, teamVitesse)
+
+# ---------- All Players -------------#
+
+playerObjects = teamAjax + teamVitesse
+
+
 # -------------- Goals --------------#
 goalObjects = [
     Goals("Johan Neeskens", 10),
@@ -174,15 +176,13 @@ goalObjects = [
     Goals("Dick van Dijk", 81),
     Goals("Johan Neeskens", 88),
 ]
-# for goal in goalObjects:
-#    print(goal.goalScorer)
 
 # class Goal:
 
 goalInfo = []
 
 
-# Functions
+# ----------- Functions ------------#
 def getGoalInfo(players=playerObjects, goals=goalObjects):
     for goal in goals:
         for player in players:
@@ -197,8 +197,14 @@ def getGoalInfo(players=playerObjects, goals=goalObjects):
     return goalInfo
 
 
-# getGoalInfo()
-# print(goalInfo)
+def matchDiscriptionReport():
+    print(
+        f"On {matchDetailsObject.date}, {matchDetailsObject.homeTeam} played against {matchDetailsObject.awayTeam} at {matchDetailsObject.matchLocation.stadium} in {matchDetailsObject.matchLocation.city}."
+    )
+    print(
+        f"A total of {matchDetailsObject.attendance} supporters came out to cheers on their respective teams"
+    )
+    print(f"The referee for the match was {matchDetailsObject.referee.referee}.")
 
 
 def reportSentance(singleGoal, ajaxScore, vitesseScore):
@@ -212,6 +218,7 @@ def reportSentance(singleGoal, ajaxScore, vitesseScore):
 
 
 def matchReport(goalInfo=goalInfo):
+    matchDiscriptionReport()
     getGoalInfo()
     ajaxScore = 0
     vitesseScore = 0
@@ -224,7 +231,7 @@ def matchReport(goalInfo=goalInfo):
             vitesseScore += 1
             reportSentance(goal, ajaxScore, vitesseScore)
 
-    print(">>>Ajax beat Vitesse with an end score of", ajaxScore, "-", vitesseScore)
+    print(">>>AFC Ajax beat Vitesse with an end score of", ajaxScore, "-", vitesseScore)
 
 
-# matchReport()
+matchReport()
