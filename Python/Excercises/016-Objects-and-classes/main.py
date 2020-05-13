@@ -12,10 +12,58 @@ class Goals:
         self.goalScorer = goalScorer
         self.time = time
 
+    def getGoalInfo(self, players, goals):
+        self.players = players
+        self.goals = goals
+        goalInfo = []
+        for goal in goals:
+            for player in players:
+                if goal.goalScorer == player.fullName:
+                    goalInfo.append(
+                        {
+                            "playerName": player.fullName,
+                            "time": goal.time,
+                            "team": player.team,
+                        }
+                    )
+        return goalInfo
+
+
+"""
+    def reportSentance(self, singleGoal, ajaxScore, vitesseScore):
+        print(
+            singleGoal["playerName"],
+            "scored in the " + str(singleGoal["time"]) + "th minute. Ajax",
+            ajaxScore,
+            "- Vitesse",
+            vitesseScore,
+        )
+
+        def matchReport(self):
+            goalInfo = self.getGoalInfo(playerObjects, goalObjects)
+            ajaxScore = 0
+            vitesseScore = 0
+
+            for goal in goalInfo:
+                if goal["team"] == ajax:
+                    ajaxScore += 1
+                    self.reportSentance(goal, ajaxScore, vitesseScore)
+                else:
+                    vitesseScore += 1
+                    self.reportSentance(goal, ajaxScore, vitesseScore)
+
+            print(
+                ">>>AFC Ajax beat Vitesse with an end score of",
+                ajaxScore,
+                "-",
+                vitesseScore,
+            )
+"""
+
 
 class Team:
-    def __init__(self, team, trainer, players):
-        self.team = team
+    def __init__(self, teamName, trainer, players):
+        self.teamName = teamName
         self.trainer = trainer
         self.players = players
 
@@ -45,6 +93,15 @@ class Match:
         self.referee = referee
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
+
+    def matchDiscriptionReport(self):
+        print(
+            f"On {self.date}, {self.homeTeam.teamName} played against {self.awayTeam.teamName} at {self.matchLocation.stadium} in {self.matchLocation.city}."
+        )
+        print(
+            f"A total of {self.attendance} supporters came out to cheer on their respective teams"
+        )
+        print(f"The referee for the match was {self.referee.referee}.")
 
 
 # --------- Data and Global Variables -------- #
@@ -106,9 +163,6 @@ attendance = 6000
 gameDate = "Friday 19 Mei 1972"
 matchLocation = Location("Amsterdam", "De Meer")
 
-
-matchDetailsObject = Match(gameDate, matchLocation, attendance, referee, ajax, vitesse)
-print(matchDetailsObject.matchLocation.city)
 
 # ----------- Ajax Team ------------#
 AjaxTeamName = "AFC Ajax"
@@ -179,7 +233,7 @@ goalObjects = [
 
 # class Goal:
 
-goalInfo = []
+"""goalInfo = []
 
 
 # ----------- Functions ------------#
@@ -197,16 +251,6 @@ def getGoalInfo(players=playerObjects, goals=goalObjects):
     return goalInfo
 
 
-def matchDiscriptionReport():
-    print(
-        f"On {matchDetailsObject.date}, {matchDetailsObject.homeTeam} played against {matchDetailsObject.awayTeam} at {matchDetailsObject.matchLocation.stadium} in {matchDetailsObject.matchLocation.city}."
-    )
-    print(
-        f"A total of {matchDetailsObject.attendance} supporters came out to cheers on their respective teams"
-    )
-    print(f"The referee for the match was {matchDetailsObject.referee.referee}.")
-
-
 def reportSentance(singleGoal, ajaxScore, vitesseScore):
     print(
         singleGoal["playerName"],
@@ -218,7 +262,6 @@ def reportSentance(singleGoal, ajaxScore, vitesseScore):
 
 
 def matchReport(goalInfo=goalInfo):
-    matchDiscriptionReport()
     getGoalInfo()
     ajaxScore = 0
     vitesseScore = 0
@@ -234,4 +277,12 @@ def matchReport(goalInfo=goalInfo):
     print(">>>AFC Ajax beat Vitesse with an end score of", ajaxScore, "-", vitesseScore)
 
 
-matchReport()
+# matchReport()
+"""
+
+matchDetailsObject = Match(
+    gameDate, matchLocation, attendance, referee, AjaxTeamObject, VitesseTeamObject
+)
+print(">>>>>> Test class", matchDetailsObject.matchDiscriptionReport())
+
+print(Goals.getGoalInfo(players=playerObjects, goals=goalObjects))
