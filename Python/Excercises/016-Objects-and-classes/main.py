@@ -7,8 +7,7 @@ class Player:
         self.team = team
 
 
-# Rename to goal
-class Goals:
+class Goal:
     def __init__(self, goalScorer, time):
         self.goalScorer = goalScorer
         self.time = time
@@ -50,29 +49,28 @@ class Match:
         self.awayTeam = awayTeam
         self.goals = goals
 
-    def matchDiscriptionReport(self):
+    def printMatchDiscription(self):
         print(
-            f"On {self.date}, {self.homeTeam.teamName} played against {self.awayTeam.teamName} at {self.matchLocation.stadium} in {self.matchLocation.city}."
+            f"On {self.date}, {self.homeTeam.teamName} played against {self.awayTeam.teamName} at {self.matchLocation.stadium} stadium in {self.matchLocation.city}."
         )
         print(
             f"A total of {self.attendance} supporters came out to cheer on their respective teams"
         )
         print(f"The referee for the match was {self.referee.referee}.")
 
-    def matchReport(self):
-
+    def printMatchReport(self):
         ajaxScore = 0
         vitesseScore = 0
         for goal in self.goals:
             if goal["team"] == ajax:
                 ajaxScore += 1
                 print(
-                    f'{goal["playerName"]} scored {str(goal["time"])} minutes into the game. Ajax: {ajaxScore}, - Vitesse: {vitesseScore}.'
+                    f'{goal["playerName"]} scored {str(goal["time"])} minutes into the game for {goal["team"]}. Ajax: {ajaxScore}, - Vitesse: {vitesseScore}.'
                 )
             else:
                 vitesseScore += 1
                 print(
-                    f'{goal["playerName"]} scored {str(goal["time"])} minutes into the game. Ajax: {ajaxScore}, - Vitesse: {vitesseScore}.'
+                    f'{goal["playerName"]} scored {str(goal["time"])} minutes into the game for {goal["team"]}. Ajax: {ajaxScore}, - Vitesse: {vitesseScore}.'
                 )
         print(
             ">>>AFC Ajax beat Vitesse with an end score of",
@@ -84,7 +82,7 @@ class Match:
 
 # --------- Data and Global Variables -------- #
 
-ajaxPlayers = [
+ajaxList = [
     "Heinz Stuy",
     "Barry Hulshoff",
     "Gerrie Muhren",
@@ -99,7 +97,7 @@ ajaxPlayers = [
     "Johnny Rep",
 ]
 
-vitessePlayers = [
+vitesseList = [
     "Dick Beukhof",
     "Ben Gerritsen",
     "Willy Melchers",
@@ -143,70 +141,44 @@ matchLocation = Location("Amsterdam", "De Meer")
 
 
 # ----------- Ajax Team ------------#
-AjaxTeamName = "AFC Ajax"
+ajaxTeamName = ajax
 
 ajaxCoach = Coach("Ștefan Kovács", ajax)
 
-teamAjax = [
-    Player("Heinz Stuy", ajax),
-    Player("Barry Hulshoff", ajax),
-    Player("Gerrie Muhren", ajax),
-    Player("Ruud Krol", ajax),
-    Player("Wim Suurbier", ajax),
-    Player("Horst Blankenburg", ajax),
-    Player("Sjaak Swart", ajax),
-    Player("Arie Haan", ajax),
-    Player("Johan Neeskens", ajax),
-    Player("Johan Cruyff", ajax),
-    Player("Dick van Dijk", ajax),
-    Player("Johnny Rep", ajax),
-]
+ajaxPlayers = [Player(player, ajax) for player in ajaxList]
 
-AjaxTeamObject = Team(AjaxTeamName, ajaxCoach, teamAjax)
+AjaxTeamObject = Team(ajaxTeamName, ajaxCoach, ajaxPlayers)
 
 # ----------- Vitesse Team ------------#
-vitesseTeamName = "Vitesse"
+vitesseTeamName = vitesse
 
 vitesseCoach = Coach("Cor Brom", vitesse)
 
-teamVitesse = [
-    Player("Dick Beukhof", vitesse),
-    Player("Ben Gerritsen", vitesse),
-    Player("Willy Melchers", vitesse),
-    Player("Ben Bosma", vitesse),
-    Player("Nico Kunst", vitesse),
-    Player("Herman Veenendaal", vitesse),
-    Player("Willy Veenstra", vitesse),
-    Player("Bram van Kerkhof", vitesse),
-    Player("Co Prins", vitesse),
-    Player("Thei Rutten", vitesse),
-    Player("Henk Vleeming", vitesse),
-    Player("Henk Hofs", vitesse),
-    Player("John Meeuwsen", vitesse),
-]
+vitessePlayers = [Player(player, vitesse) for player in vitesseList]
 
-VitesseTeamObject = Team(vitesseTeamName, vitesseCoach, teamVitesse)
+
+VitesseTeamObject = Team(vitesseTeamName, vitesseCoach, vitessePlayers)
 
 # ---------- All Players -------------#
 
-playerObjects = teamAjax + teamVitesse
+playerObjects = ajaxPlayers + vitessePlayers
 
 
 # -------------- Goals --------------#
 goalObjects = [
-    Goals("Johan Neeskens", 10),
-    Goals("Johan Neeskens", 28),
-    Goals("Johan Cruyff", 32),
-    Goals("Johan Cruyff", 42),
-    Goals("Johan Cruyff", 47),
-    Goals("Dick van Dijk", 49),
-    Goals("Dick van Dijk", 51),
-    Goals("Gerrie Muhren", 63),
-    Goals("Barry Hulshoff", 70),
-    Goals("Herman Veenendaal", 75),
-    Goals("Johan Cruyff", 78),
-    Goals("Dick van Dijk", 81),
-    Goals("Johan Neeskens", 88),
+    Goal("Johan Neeskens", 10),
+    Goal("Johan Neeskens", 28),
+    Goal("Johan Cruyff", 32),
+    Goal("Johan Cruyff", 42),
+    Goal("Johan Cruyff", 47),
+    Goal("Dick van Dijk", 49),
+    Goal("Dick van Dijk", 51),
+    Goal("Gerrie Muhren", 63),
+    Goal("Barry Hulshoff", 70),
+    Goal("Herman Veenendaal", 75),
+    Goal("Johan Cruyff", 78),
+    Goal("Dick van Dijk", 81),
+    Goal("Johan Neeskens", 88),
 ]
 
 goalInfo = []
@@ -219,7 +191,7 @@ for goal in goalObjects:
 
 # -------------- Running Operations --------- #
 
-allMatchDetailsObject = Match(
+matchDetails = Match(
     gameDate,
     matchLocation,
     attendance,
@@ -228,5 +200,6 @@ allMatchDetailsObject = Match(
     VitesseTeamObject,
     goalInfo,
 )
-print(allMatchDetailsObject.matchDiscriptionReport())
-print(allMatchDetailsObject.matchReport())
+
+matchDetails.printMatchDiscription()
+matchDetails.printMatchReport()
